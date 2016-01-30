@@ -12,6 +12,4 @@ class PosterCell: UICollectionViewCell {
     
     
     @IBOutlet weak var posterImage: UIImageView!
-
-    
 }
