@@ -111,9 +111,6 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UIColl
         if let posterPath = movie["poster_path"] as? String
         {
            let imageUrl = NSURL(string: baseUrl + posterPath)
-            //cell.titleLabel!.text = title
-            //cell.overviewLabel.text =  overview
-            // cell.posterImage.setImageWithURL(imageUrl!)
             let imageRequest = NSURLRequest(URL:imageUrl!)
             
             cell.posterImage.setImageWithURLRequest(
@@ -268,17 +265,20 @@ func searchBarCancelButtonClicked(searchBar: UISearchBar) {
     
 }
     
-    
-}   /*end of class brace*/
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        let cell = sender as! UICollectionViewCell
+        let indexpath =  collectionView.indexPathForCell(cell)
+        let movie = movies![indexpath!.row]
+        
+        let detailViewController = segue.destinationViewController as! DetailViewController
+        detailViewController.movie = movie
+        
+        
     }
-    */
 
 
+}   /*end of class brace*/
